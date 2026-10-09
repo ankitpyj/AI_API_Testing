@@ -1,5 +1,7 @@
 import os
 import json
+from pathlib import Path
+from dotenv import load_dotenv
 
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -9,9 +11,9 @@ from test_generator.rule_based_generator import (
 )
 
 
-# Load environment variables
-load_dotenv()
-
+# Load the .env file from agent_backend
+BACKEND_ROOT = Path(__file__).resolve().parents[2]
+load_dotenv(BACKEND_ROOT / ".env")
 
 # NVIDIA client
 client = OpenAI(

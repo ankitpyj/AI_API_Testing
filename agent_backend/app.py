@@ -1,15 +1,15 @@
 import sys
 from pathlib import Path
-from database import get_db_connection
+from agent_backend.database import get_db_connection
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import json
 # Add parent directory to path to import sibling modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from target_api.test_generator.test_executor import run_all_tests
+from agent_backend.engine.test_generator.test_executor import run_all_tests
 
-from db_operations import (
+from agent_backend.db_operations import (
     create_test_run,
     save_test_result,
     save_bug_report,

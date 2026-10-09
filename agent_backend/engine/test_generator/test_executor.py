@@ -5,24 +5,30 @@ import requests
 
 
 # Project paths
-TARGET_API_ROOT = os.path.dirname(
+
+ENGINE_ROOT = os.path.dirname(
     os.path.dirname(
         os.path.abspath(__file__)
     )
 )
 
-PROJECT_ROOT = os.path.dirname(
-    TARGET_API_ROOT
-)
+AGENT_BACKEND_ROOT = os.path.dirname(ENGINE_ROOT)
 
-AGENT_BACKEND_ROOT = os.path.join(
+PROJECT_ROOT = os.path.dirname(AGENT_BACKEND_ROOT)
+
+TARGET_API_ROOT = os.path.join(
     PROJECT_ROOT,
-    "agent_backend"
+    "target_api"
 )
 
-# Allow Python to find project modules
-sys.path.append(TARGET_API_ROOT)
-sys.path.append(AGENT_BACKEND_ROOT)
+# Add the correct folders to Python's import path
+for folder in [
+    ENGINE_ROOT,
+    AGENT_BACKEND_ROOT,
+    PROJECT_ROOT
+]:
+    if folder not in sys.path:
+        sys.path.insert(0, folder)
 
 from bug_report.bug_report_generator import (
     generate_bug_report
