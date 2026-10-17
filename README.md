@@ -286,7 +286,3 @@ Contributions and suggestions are welcome. For changes:
 4.  Document configuration or behavior changes.
 5.  Open a pull request with a clear summary.
 
-## License
-
-No license is specified here. Add a `LICENSE` file before describing the
-project as open source.
